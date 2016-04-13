@@ -1,2 +1,6 @@
 *.iml
 build
+.gradle
+.idea
+*.sha1
+*.xml

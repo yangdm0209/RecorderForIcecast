@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
-println path
+
+version = '1.0'
+
 android {
     compileSdkVersion 21
     buildToolsVersion "23.0.2"
@@ -22,5 +24,24 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+    }
+
+    tasks.getByName("assemble"){
+        it.doLast{
+            task copyAAR(type: Copy) {
+                println "$project.name: After assemble, aar libs are copied to local repository"
+                from 'build/outputs/aar'
+                into '.'
+                include('*.aar')
+            }
+        }
+    }
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs '.'
+       }
     }
 }
