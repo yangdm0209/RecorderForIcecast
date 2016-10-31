@@ -1,3 +1,5 @@
+Android voice recorder, push stream to icecast server
+安卓录音并推送到icecast进行直播。
 
 ## compile aar
 
